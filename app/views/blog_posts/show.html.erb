@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+
+  
+  <h2><%= @blog_post.title %> </h2>
+
+
+
+  <h3> posted by <%= @blog_post.author %> at <%= @blog_post.created_at.strftime("%B %d, %Y") %> </h3>
+
+
+<p>
+ 
+  <%= @blog_post.blog_entry %>
+</p>
+
+<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+<%= link_to 'Back', blog_posts_path %>
+
+<div> <%= render 'comments/form' %>
+	</div>
+
+<h4>Comments<h4>
+	<%@blog_post.comments.each do |comment| %>
+	<p><strong><%= comment.author %><strong> said: </p>
+	<p><%= comment.comment_entry %></p>
+
+	<% end %>
